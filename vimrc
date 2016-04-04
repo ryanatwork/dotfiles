@@ -145,3 +145,8 @@ let c_space_errors = 1
 
 highlight SignColumn ctermbg=black
 set runtimepath^=~/.vim/bundle/ctrlp.vim
+execute pathogen#infect()
+let g:solarized_termcolors=256
+syntax enable
+set background=dark
+colorscheme solarized
