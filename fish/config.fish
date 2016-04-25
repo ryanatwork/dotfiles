@@ -10,3 +10,6 @@ set -x PATH $HOME/.rbenv/shims $PATH
 set -x PATH $HOME/bin $PATH
 set -x RUBYGEMS_EC2_DB1 ec2-54-245-133-190.us-west-2.compute.amazonaws.com
 set -x RUBYGEMS_EC2_LB1 54.245.255.174
+set -x JAVA_HOME (/usr/libexec/java_home)
+set -x NVM_DIR /Users/ryanresella/.nvm
+

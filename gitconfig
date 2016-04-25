@@ -29,7 +29,7 @@
   lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
   st = status -bs
 [core]
-  excludesfile = /Users/sferik/.gitignore_global
+  excludesfile = /Users/ryanresella/.gitignore_global
   quotepath = false
 [push]
   default = tracking
@@ -42,3 +42,5 @@
 [mergetool "threesome"]
   cmd = "vim -f $BASE $LOCAL $REMOTE $MERGED -c 'ThreesomeInit'"
   trustExitCode = true
+[init]
+	templatedir = ~/work/bash_common/git-templates
