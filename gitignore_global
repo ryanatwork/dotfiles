@@ -50,3 +50,7 @@ Vagrantfile
 # Crystal files #
 ##################
 .crystal
+
+# Elixir #
+#################
+.elixir_ls/
