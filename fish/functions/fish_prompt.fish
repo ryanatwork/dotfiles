@@ -1,6 +1,7 @@
 function fish_prompt --description 'Write out the prompt'
 
   set -l last_status $status
+  set kubenv (kubectl config current-context)
 
   # Just calculate these once, to save a few cycles when displaying the prompt
   if not set -q __fish_prompt_hostname
@@ -73,5 +74,5 @@ function fish_prompt --description 'Write out the prompt'
     set -g __fish_prompt_host (set_color $fish_color_host)
   end
 
-  echo -n -s "$__fish_prompt_user" "$USER" "$__fish_prompt_normal" @ "$__fish_prompt_host" "$__fish_prompt_hostname" "$__fish_prompt_normal" ' ' "$__fish_prompt_cwd" (prompt_pwd) (set_color -o yellow) (__fish_git_prompt) "$__fish_prompt_normal" "$prompt_status" ' ' "$delim" ' '
+  echo -n -s "$__fish_prompt_user" "$USER" "$__fish_prompt_normal" @ "$__fish_prompt_host" "$__fish_prompt_hostname" "$__fish_prompt_normal" ' ' (set_color -o blue) "[$kubenv]" ' ' "$__fish_prompt_cwd" (prompt_pwd) (set_color -o yellow) (__fish_git_prompt) "$__fish_prompt_normal" "$prompt_status" ' ' "$delim" ' '
 end
