@@ -28,8 +28,9 @@
   l1 = log --oneline --decorate
   lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
   st = status -bs
+  cleanup = "!git branch --merged | grep  -v '\\*\\|main\\|develop' | xargs -n 1 -r git branch -d"
 [core]
-  excludesfile = /Users/ryanresella/.gitignore_global
+	excludesfile = /Users/rresella/.gitignore_global
   quotepath = false
   whitespace = trailing-space,space-before-tab
 [push]

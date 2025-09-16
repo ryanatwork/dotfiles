@@ -54,3 +54,6 @@ Vagrantfile
 # Elixir #
 #################
 .elixir_ls/
+
+# VS Code #
+.vscode/

@@ -18,16 +18,24 @@ set -x RUBYGEMS_EC2_LB1 54.245.255.174
 set -x JAVA_HOME (/usr/libexec/java_home)
 set -x NVM_DIR $HOME/.nvm
 
+# Needed for building libsalty2 on Apple Silicon chips
+set -x LDFLAGS "-L/opt/homebrew/opt/libsodium"
+set -x C_INCLUDE_PATH /opt/homebrew/include
+set -x CPLUS_INCLUDE_PATH /opt/homebrew/include
+set -x LIBRARY_PATH /opt/homebrew/lib
+
 # Elixir Options
 set -gx ERL_AFLAGS "-kernel shell_history enabled"
-source (brew --prefix asdf)/asdf.fish
-source /usr/local/opt/asdf/libexec/asdf.fish
+source ~/.asdf/asdf.fish
 
 set -g fish_user_paths "/usr/local/opt/openssl@1.1/bin" $fish_user_paths
 
-env RUBY_CONFIGURE_OPTS="--with-openssl-dir=(brew --prefix openssl@1.1)"
+#set -x RUBY_CONFIGURE_OPTS "--with-openssl-dir=(brew --prefix openssl@1.1)"
+#set -x CFLAGS "-Wno-error=implicit-function-declaration"
 
 # Added by change/development_environment script
 set -x WORKDIR /Users/rresella/work
 set -x PATH $WORKDIR/development_environment/bin $PATH
+
+kubectl completion fish | source
 
