@@ -15,26 +15,38 @@ set -x PATH $HOME/.rbenv/shims $PATH
 set -x PATH $HOME/bin $PATH
 set -x RUBYGEMS_EC2_DB1 ec2-54-245-133-190.us-west-2.compute.amazonaws.com
 set -x RUBYGEMS_EC2_LB1 54.245.255.174
-set -x JAVA_HOME (/usr/libexec/java_home)
 set -x NVM_DIR $HOME/.nvm
 
 # Needed for building libsalty2 on Apple Silicon chips
-set -x LDFLAGS "-L/opt/homebrew/opt/libsodium"
+set -x LDFLAGS "-L"(brew --prefix libsodium)"/lib"
 set -x C_INCLUDE_PATH /opt/homebrew/include
 set -x CPLUS_INCLUDE_PATH /opt/homebrew/include
 set -x LIBRARY_PATH /opt/homebrew/lib
 
 # Elixir Options
 set -gx ERL_AFLAGS "-kernel shell_history enabled"
-source ~/.asdf/asdf.fish
 
-set -g fish_user_paths "/usr/local/opt/openssl@1.1/bin" $fish_user_paths
+# ASDF configuration code
+if test -z $ASDF_DATA_DIR
+    set _asdf_shims "$HOME/.asdf/shims"
+else
+    set _asdf_shims "$ASDF_DATA_DIR/shims"
+end
+
+# Do not use fish_add_path (added in Fish 3.2) because it
+# potentially changes the order of items in PATH
+if not contains $_asdf_shims $PATH
+    set -gx --prepend PATH $_asdf_shims
+end
+set --erase _asdf_shims
+
+#set -g fish_user_paths "/usr/local/opt/openssl@1.1/bin" $fish_user_paths
 
 #set -x RUBY_CONFIGURE_OPTS "--with-openssl-dir=(brew --prefix openssl@1.1)"
 #set -x CFLAGS "-Wno-error=implicit-function-declaration"
 
 # Added by change/development_environment script
-set -x WORKDIR /Users/rresella/work
+set -x WORKDIR /Users/ryanresella/work
 set -x PATH $WORKDIR/development_environment/bin $PATH
 
 kubectl completion fish | source
