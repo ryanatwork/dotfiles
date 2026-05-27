@@ -30,6 +30,26 @@ you're doing and read that instead.
     cd dotfiles
     thor dotfiles:install
 
+### Fish plugins (nvm, etc.)
+
+The fish plugin set is tracked in `fish/fish_plugins` and managed by
+[Fisher](https://github.com/jorgebucaran/fisher). After running the install
+above, restore plugins on a new machine with:
+
+    # Install Fisher itself
+    fish -c 'curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher'
+
+    # Install everything listed in fish_plugins
+    fish -c 'fisher update'
+
+### Node via nvm.fish
+
+Node is managed by [jorgebucaran/nvm.fish](https://github.com/jorgebucaran/nvm.fish)
+(installed by the Fisher step above). To set a default that auto-activates
+in every new shell:
+
+    fish -c 'nvm install lts; and set --universal nvm_default_version lts'
+
 ## Inspiration
 These files are an amalgamation of wisdom collected over the years, the sources
 of which are too numerous to list. The idea to put them in a repository with an
