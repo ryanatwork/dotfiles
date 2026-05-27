@@ -57,3 +57,8 @@ Vagrantfile
 
 # VS Code #
 .vscode/
+
+# Claude
+.claude/worktrees/
+.claude/settings.local.json
+
